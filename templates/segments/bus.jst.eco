@@ -1,5 +1,14 @@
-<div class="start">Take <span class="badge badge-inverse"><%= @segment.route %></span>
-<span class="duration label"><%= Transit.format_time @segment.startTime %></span>
-<span class="real-time label"></span>
+<span class="timing pull-right">
+	<span class="duration label"><%= Transit.format_time @segment.startTime %></span><br/>
+	<span class="real-time label"></span>
+</span>
+
+<div class="">
+	Take <a class="btn btn-small btn-route" href="/routes/<%= @segment.agencyId %>/<%= @segment.route %>"><%= @segment.route %></a> 
+	to <a class="btn btn-stop" href="/stops/<%= @segment.to.stopId.agencyId %>/<%= @segment.to.stopId.id %>"><%= @segment.to.name %>
+		<span class="safety" style="display:none;">
+			<i class="icon-warning-sign" title="Be aware of your surroundings at this stop"></i>
+		</span>
+	</a>
 </div>
-<div class="finish">Get off at <%= @segment.to.name %></div>
+<!-- <div class="description"><%= @segment.headsign %> for <%= Transit.format_duration(@segment.duration / 1000) %></div> -->
